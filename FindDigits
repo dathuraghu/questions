@@ -1,0 +1,97 @@
+An integer  is a divisor of an integer  if the remainder of .
+
+Given an integer, for each digit that makes up the integer determine whether it is a divisor. Count the number of divisors occurring within the integer.
+
+Example
+
+Check whether ,  and  are divisors of . All 3 numbers divide evenly into  so return .
+
+
+Check whether , , and  are divisors of . All 3 numbers divide evenly into  so return .
+
+
+Check whether  and  are divisors of .  is, but  is not. Return .
+
+Function Description
+
+Complete the findDigits function in the editor below.
+
+findDigits has the following parameter(s):
+
+int n: the value to analyze
+Returns
+
+int: the number of digits in  that are divisors of 
+Input Format
+
+The first line is an integer, , the number of test cases.
+The  subsequent lines each contain an integer, .
+
+Constraints
+
+
+
+Sample Input
+
+
+
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+class Result {
+
+    /*
+     * Complete the 'findDigits' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER n as parameter.
+     */
+
+    public static int findDigits(int n) {
+    // Write your code here
+    int temp =n;
+    int cnt=0;
+    while(temp>0)
+    {
+        int t = temp%10;
+        if(t !=0){
+            if(n%t==0 && t !=0)
+            {
+                cnt++;
+            }
+        }
+        temp = temp/10;
+    }
+    return cnt;
+
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int t = Integer.parseInt(bufferedReader.readLine().trim());
+
+        for (int tItr = 0; tItr < t; tItr++) {
+            int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+            int result = Result.findDigits(n);
+
+            bufferedWriter.write(String.valueOf(result));
+            bufferedWriter.newLine();
+        }
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
